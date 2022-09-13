@@ -1,6 +1,6 @@
 import React, { createContext, useState} from "react";
 
-const SeatPriceContext = createContext();
+export const SeatPriceContext = createContext();
 
 const SeatPriceContextProvider = (props) => {
   const [price, setPrice] = useState('');
