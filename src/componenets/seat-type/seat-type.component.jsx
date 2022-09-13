@@ -1,46 +1,38 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 // context
 import { SeatPriceContext } from '../../context/seatPriceContext.js';
 
 // styles
-import './seat-type.styles.css'
+import './seat-type.styles.css';
 
 function SeatType() {
-  const { updatePrice } = useContext(SeatPriceContext);
+	const { updatePrice } = useContext(SeatPriceContext);
 
-  const [price, setPrice] = useState(
-		JSON.parse(localStorage.getItem('selectedMoviePrice'))
+	const [price, setPrice] = useState(
+		JSON.parse(localStorage.getItem('selectedMoviePrice') || 300)
 	);
 
-  const [selectedMovieIndex, setSelectedMovie] = useState(
-		JSON.parse(localStorage.getItem('selectedMovieIndex'))
-	);
+	// handle select option change
+	const handleChange = (e) => {
+		e.preventDefault();
+		setPrice(Number(e.target.value));
+	};
 
-  // save movie data to local storage
-  const saveMovieData = (movieIndex, moviePrice) => {
-    localStorage.setItem('selectedMovieIndex', movieIndex);
-    localStorage.setItem('selectedMoviePrice', moviePrice);
-  }
+	useEffect(() => {
+		// update price for context
+		updatePrice(price);
+	})
 
-  // handle select option change
-  const handleChange = (e) => {
-    e.preventDefault();
-    setPrice(Number(e.target.value));
-    setSelectedMovie(e.target.selectedIndex);
-  }
+	// save movie data to local storage
+	localStorage.setItem('selectedMoviePrice', price);
 
-  // update price for context
-  updatePrice(price);
-
-  saveMovieData(selectedMovieIndex, price);
-
-  return (
+	return (
 		<div className='movie-container'>
 			<label>Select Seat Type: </label>
-			<select onChange={handleChange} id='movie'>
+			<select value={`${price}`} onChange={handleChange} id='movie'>
 				<option value='300'>Regular (300tk)</option>
-				<option selected={selectedMovieIndex} value='350'>Premium (350tk)</option>
+				<option value='350'>Premium (350tk)</option>
 			</select>
 		</div>
 	);

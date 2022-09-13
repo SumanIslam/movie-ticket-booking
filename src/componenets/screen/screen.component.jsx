@@ -1,15 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 
 // context
 import { SeatPriceContext } from "../../context/seatPriceContext";
 
 // styles
-import './screen.style.css'
+import './screen.style.css';
 
 function Screen() {
-	const [SelectedSeatsCount, setSelectedSeatsCount] = useState(
-		JSON.parse(localStorage.getItem('selectedSeats')).length
-	);
+	const count = localStorage.getItem('selectedSeats') ? JSON.parse(localStorage.getItem('selectedSeats')).length : 0;
+
+	const [SelectedSeatsCount, setSelectedSeatsCount] = useState(count);
+
 	const { price } = useContext(SeatPriceContext);
 
 	// populate selected seats from local storage
@@ -34,7 +35,6 @@ function Screen() {
 	// save index of seats in local storage
 	const saveSeatIndex = (allSeats, seats) => {
 		const seatsIndex = [...seats].map((seat) => [...allSeats].indexOf(seat));
-		console.log(seatsIndex);
 
 		localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 	}
