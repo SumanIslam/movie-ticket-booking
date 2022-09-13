@@ -29,10 +29,12 @@ function SeatType() {
 
 	return (
 		<div className='movie-container'>
-			<label>Select Seat Type: </label>
+			<label>Pick a movie: </label>
 			<select value={`${price}`} onChange={handleChange} id='movie'>
-				<option value='300'>Regular (300tk)</option>
-				<option value='350'>Premium (350tk)</option>
+				<option value='500'>Avengers: Endgame (500tk)</option>
+				<option value='550'>Joker (550tk)</option>
+				<option value='450'>Toy Story 4 (450tk)</option>
+				<option value='450'>The Lion King (450tk)</option>
 			</select>
 		</div>
 	);

@@ -15,7 +15,7 @@ function SeatStatus() {
 			<li>
 				<div className='seat-align'>
 					<div className='seat selected'></div>
-					<small>Available</small>
+					<small>Selected</small>
 				</div>
 			</li>
 			<li>
