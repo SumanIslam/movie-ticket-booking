@@ -34,7 +34,7 @@ function SeatType() {
 				<option value='500'>Avengers: Endgame (500tk)</option>
 				<option value='550'>Joker (550tk)</option>
 				<option value='450'>Toy Story 4 (450tk)</option>
-				<option value='450'>The Lion King (450tk)</option>
+				<option value='400'>The Lion King (450tk)</option>
 			</select>
 		</div>
 	);
