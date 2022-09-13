@@ -51,7 +51,7 @@
 .screen {
   background-color: #fff;
   height: 70px;
-  width: 70%;
+  width: 68%;
   margin: auto;
   margin-bottom: 2rem;
   transform: rotateX(-45deg);
@@ -61,6 +61,7 @@
 
 p.text {
   margin: 5px 0;
+  text-align: center;
 }
 
 p.text span {
